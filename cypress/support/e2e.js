@@ -1,0 +1,5 @@
+import './commands'
+import './cadastroUsuario'
+import './login'
+import './carrinho'
+import './categorias'
