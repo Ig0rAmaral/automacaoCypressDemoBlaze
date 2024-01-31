@@ -12,7 +12,7 @@ describe('Automação do carrinho', () => {
     it('Deletar item do carrinho com sucesso', () => {
         cy.deletaItemCarrinho()
     })
-    it.only('Finalizar compra carrinho', () => {
+    it('Finalizar compra carrinho', () => {
         cy.finalizarCompraCarrinho()
     })
 })
