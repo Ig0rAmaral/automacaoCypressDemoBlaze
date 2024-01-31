@@ -5,39 +5,45 @@ const randomName = (faker.name.findName())
 
 
 Cypress.Commands.add('adicionaItemCarrinho' , () => {
-    cy.get(selectors.primeiroItemLista, {timeout: 15000}).should('be.visible').click()
+    cy.get(selectors.primeiroItemLista)
+    .should('be.visible')
+    .click()
     cy.get(selectors.botaoAddToCart).click()
     cy.on('window:alert',(txt)=>{
         expect(txt).to.contains('Product added');
     })
     cy.get(selectors.botaoCart).click()
-    cy.get('.success').should('exist')
+    cy.get(selectors.listaCarrinho).should('exist')
 })
 
 Cypress.Commands.add('deletaItemCarrinho' , () => {
-    cy.get(selectors.primeiroItemLista, {timeout: 10000}).should('be.visible').click()
+    cy.get(selectors.primeiroItemLista)
+    .should('be.visible')
+    .click()
     cy.get(selectors.botaoAddToCart).click()
     cy.on('window:alert',(txt)=>{
         expect(txt).to.contains('Product added');
     })
-    cy.get(selectors.botaoCart).click()
     cy.intercept('https://api.demoblaze.com/view').as('esperaItemCarrinho')
+    cy.get(selectors.botaoCart).click()
     cy.wait('@esperaItemCarrinho')
-    cy.get('.success').should('exist')
+    cy.get(selectors.listaCarrinho).should('exist')
     cy.contains('a', 'Delete').click()
-    cy.get('.success').should('not.exist')
+    cy.get(selectors.listaCarrinho).should('not.exist')
 })
 
 Cypress.Commands.add('finalizarCompraCarrinho' , () => {
-    cy.get(selectors.primeiroItemLista, {timeout: 10000}).should('be.visible').click()
+    cy.get(selectors.primeiroItemLista)
+    .should('be.visible')
+    .click()
     cy.get(selectors.botaoAddToCart).click()
     cy.on('window:alert',(txt)=>{
         expect(txt).to.contains('Product added');
     })
-    cy.get(selectors.botaoCart).click()
     cy.intercept('https://api.demoblaze.com/view').as('esperaItemCarrinho')
+    cy.get(selectors.botaoCart).click()
     cy.wait('@esperaItemCarrinho')
-    cy.get('.success').should('exist')
+    cy.get(selectors.listaCarrinho).should('exist')
     cy.get(selectors.botaoPlaceOrder).click()
     cy.wait(500)
     cy.get(selectors.campoNamePlaceOrder).type(randomName)

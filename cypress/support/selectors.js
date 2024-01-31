@@ -20,5 +20,6 @@ export default {
     campoCardPlaceOrder: 'input[type="text"][class="form-control"]#card',
     campoMonthPlaceOrder: 'input[type="text"][class="form-control"]#month',
     campoYearPlaceOrder: 'input[type="text"][class="form-control"]#year',
-    botaoPurchasePlaceOrder: 'button[type="button"][onclick="purchaseOrder()"]'
+    botaoPurchasePlaceOrder: 'button[type="button"][onclick="purchaseOrder()"]',
+    listaCarrinho: '.success'
 }

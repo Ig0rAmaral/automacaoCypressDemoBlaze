@@ -31,5 +31,5 @@ Cypress.Commands.add ('loginSenhaIncorreta', () => {
     cy.get(selectors.botaoLogInLogin).click()
     cy.on('window:alert',(txt)=>{
         expect(txt).to.contains('Wrong password.');
-      })
+    })
 })

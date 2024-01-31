@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
 beforeEach(() => {
+    cy.intercept('GET', '**/entries').as('esperaEntries')
     cy.visit('https://demoblaze.com/index.html')
+    cy.wait('@esperaEntries')
 });
-
 describe('Automação DemoBlaze', () => {
     it('Login com sucesso', () => {
         cy.loginComSucesso()
@@ -11,7 +12,7 @@ describe('Automação DemoBlaze', () => {
     it('Logout com sucesso', () => {
         cy.logoutComSucesso()
     });
-    it.only('Login com senha incorreta', () => {
+    it('Login com senha incorreta', () => {
         cy.loginSenhaIncorreta()
     });
 });
