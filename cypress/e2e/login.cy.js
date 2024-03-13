@@ -2,7 +2,7 @@
 
 beforeEach(() => {
     cy.intercept('GET', '**/entries').as('esperaEntries')
-    cy.visit('https://demoblaze.com/index.html')
+    cy.visit('/')
     cy.wait('@esperaEntries')
 });
 describe('Automação DemoBlaze', () => {
