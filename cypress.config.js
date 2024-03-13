@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://demoblaze.com/index.html',
+    baseUrl: 'https://demoblaze.com',
     failOnStatusCode: false,
       "video": false,
       "chromeWebSecurity": false,
